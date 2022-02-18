@@ -4,8 +4,20 @@ const db = require('../../data/dbConfig');
 function find() {
     return db('projects');
   }
- 
- module.exports = {find};
+
+  function add(project) { // EXERCISE D
+    /*
+      1D- This function creates a new scheme and resolves to _the newly created scheme_.
+    */
+   return db('projects').insert(project)
+   .then((
+     [project_id])=> {
+      return db('projects').where('project_id', project_id)
+    })
+  } 
+
+
+ module.exports = {find, add};
 
 
  //returned from test

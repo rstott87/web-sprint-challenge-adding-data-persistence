@@ -13,7 +13,13 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    res.send("POST from project router ")
+    const project = req.body
+    Project.add(project)
+    .then(project => {
+      res.status(201).json(project)
+    })
+    .catch(next)
 })
+
 
 module.exports = router
