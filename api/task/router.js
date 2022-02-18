@@ -14,7 +14,12 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
-    res.send("post from tasks router ")
+    const task = req.body
+    Tasks.add(task)
+    .then(task => {
+      res.status(201).json(task)
+    })
+    .catch(next)
 })
 
 

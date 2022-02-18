@@ -5,10 +5,7 @@ function find() {
     return db('projects');
   }
 
-  function add(project) { // EXERCISE D
-    /*
-      1D- This function creates a new scheme and resolves to _the newly created scheme_.
-    */
+  function add(project) { 
    return db('projects').insert(project)
    .then((
      [project_id])=> {

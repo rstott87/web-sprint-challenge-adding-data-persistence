@@ -1,0 +1,4 @@
+select t.task_id, t.task_description, t.task_notes, p.project_name, p.project_description
+from projects as p
+join tasks as t
+  on p.project_id = t.project_id

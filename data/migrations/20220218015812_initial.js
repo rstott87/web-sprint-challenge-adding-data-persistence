@@ -25,6 +25,10 @@ exports.up = async function (knex) {
               .onDelete('RESTRICT')
               .onUpdate('RESTRICT')
       })
+      .createTable('project_resources', table => {
+        table.increments('project_resources_id')
+       
+    })
   };
   
   /**
@@ -36,4 +40,5 @@ exports.up = async function (knex) {
     .dropTableIfExists('tasks')
     .dropTableIfExists('resources')
     .dropTableIfExists('projects')
+    .dropTableIfExists('project_resources')
   };
