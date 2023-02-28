@@ -10,17 +10,16 @@ function getProjects() {
         "p.project_description",
         "p.project_completed"
     );
-
     return db("projects");
     }
-
+    
 function addProject(project) {
-    let query = db("projects as p");
+   let query = db("projects as p");
     query.select(
-        "p.project_id",
-        "p.project_name",
-        "p.project_description",
-        "p.project_completed"
+      "p.project_id",
+      "p.project_name",
+      "p.project_description",
+      "p.project_completed"
     );
     
     return db("projects").insert(project);

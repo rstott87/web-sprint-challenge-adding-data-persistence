@@ -14,12 +14,18 @@ router.get("/", (req, res, next) => {
     .catch(next);
 });
 
-router.post("/", (req, res, next) => {
-  Projects.addProject(req.body)
-    .then((project) => {
-      res.status(201).json(project);
-    })
-    .catch(next);
+router.post("/", async (req, res, next) => {
+  try {
+    const projects = await Projects.addProject(req.body);
+    if (!req.body["project_completed"] || req.body["project_completed"] === 0)  {
+      req.body["project_completed"] = false;
+    } else {
+      req.body["project_completed"] = true;
+    }
+    res.json(req.body);
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = router;
